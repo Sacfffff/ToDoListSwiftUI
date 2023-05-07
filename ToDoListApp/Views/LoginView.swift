@@ -17,15 +17,19 @@ struct LoginView: View {
                 HeaderView(title: "To Do List", subtitle: "Get things done", angle: 15, backgroundColor: .pink)
                 
                 Form {
+                    
+                    if let message = viewModel.errorMessage {
+                        Text(message)
+                            .foregroundColor(.red)
+                    }
+                    
                     TextField("Email Address", text: $viewModel.email)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .textInputAutocapitalization(TextInputAutocapitalization(.none))
                         .autocorrectionDisabled()
                     SecureField("Password", text: $viewModel.password)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                    CustomButton(title: "Log in", titleColor: .white, backgroundColor: .blue) {
-                        //action
-                    }
+                    CustomButton(title: "Log in", titleColor: .white, backgroundColor: .blue) { viewModel.login() }
                 }
                 .offset(y: -50)
                 
