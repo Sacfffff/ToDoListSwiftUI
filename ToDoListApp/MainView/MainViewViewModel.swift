@@ -10,7 +10,7 @@ import Foundation
 
 final class MainViewViewModel : ObservableObject {
     
-    @Published private var currentUserId : String?
+    @Published var currentUserId : String?
     
     private var handler : AuthStateDidChangeListenerHandle?
     
