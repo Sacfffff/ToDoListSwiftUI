@@ -5,12 +5,33 @@
 //  Created by Aleks Kravtsova on 1.05.23.
 //
 
+import FirebaseFirestore
 import Foundation
 
 final class ToDoListViewViewModel : ObservableObject {
     
     @Published var showingNewItemView : Bool = false
+    private let userId : String
     
-    init() {}
+    init(userId: String) {
+        
+        self.userId = userId
+        
+    }
+    
+    
+    func delete(itemId: String) {
+        
+        let db = Firestore.firestore()
+        
+        db.collection("users")
+            .document(userId)
+            .collection("todos")
+            .document(itemId)
+            .delete()
+        
+    }
+    
+    
     
 }
