@@ -32,9 +32,9 @@ final class NewItemViewViewModel : ObservableObject {
         let newItem = ToDoListItem(id: newId, title: title, dueDate: dueDate.timeIntervalSince1970, createdDate: Date().timeIntervalSince1970, isDone: false)
          
         let db = Firestore.firestore()
-        db.collection("users")
+        db.collection(FirestoreKeys.usersPath)
             .document(uid)
-            .collection("todos")
+            .collection(FirestoreKeys.itemsPath)
             .document(newId)
             .setData(newItem.asDictionary())
         

@@ -24,9 +24,9 @@ final class ToDoListViewViewModel : ObservableObject {
         
         let db = Firestore.firestore()
         
-        db.collection("users")
+        db.collection(FirestoreKeys.usersPath)
             .document(userId)
-            .collection("todos")
+            .collection(FirestoreKeys.itemsPath)
             .document(itemId)
             .delete()
         

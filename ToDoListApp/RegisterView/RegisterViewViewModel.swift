@@ -62,7 +62,7 @@ final class RegisterViewViewModel : ObservableObject {
         let user = User(id: userId, name: name, email: email, joined: Date().timeIntervalSince1970)
         
         let db = Firestore.firestore()
-        db.collection("users")
+        db.collection(FirestoreKeys.usersPath)
             .document(userId)
             .setData(user.asDictionary())
         
